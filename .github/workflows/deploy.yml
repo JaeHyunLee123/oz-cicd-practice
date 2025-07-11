@@ -26,5 +26,7 @@ jobs:
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
 
       - name: Remove previous S3 objects
-        run: |
-          aws s3 rm --recursive s3://vite-react-sample
+        run: aws s3 rm --recursive s3://vite-react-sample
+
+      - name: Copy build files to S3
+        run: aws s3 cp ./dist s3://vite-react-sample/ --recursive
