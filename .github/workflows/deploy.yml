@@ -1,4 +1,4 @@
-name: Github Actions 실행시키기
+name: Deploy to S3
 
 on:
   push:
@@ -6,12 +6,8 @@ on:
       - main
 
 jobs:
-  Jobs-Names-run_name_demo-01:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo Test
-        run: echo "Run Workflows - run_name_demo"
-
-      - name: Secret Test
-        run: |
-          echo ${{ secrets.MY_PASSWORD }}
+      - name: Github Repository 파일 불러오기
+        uses: actions/checkout@v4 # 라이브러리
