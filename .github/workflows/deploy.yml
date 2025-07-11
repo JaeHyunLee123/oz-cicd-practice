@@ -14,4 +14,4 @@ jobs:
 
       - name: Secret Test
         run: |
-          echo ${${secrets.MY_PASSWORD}}
+          echo ${{ secrets.MY_PASSWORD }}
