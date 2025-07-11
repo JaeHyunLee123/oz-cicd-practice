@@ -15,11 +15,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: build
+      - name: Build
         run: npm run build
 
-      - name: Debugging
+      - name: AWS IAM certification
+        uses: aws-actions/configure-aws-credentials@4
+        with:
+          aws-region: ap-northeast-2
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+
+      - name: Remove previous S3 objects
         run: |
-          ls
-          cd dist
-          ls
+          aws s3 rm --recursive s3://vite-react-sample
