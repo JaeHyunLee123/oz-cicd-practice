@@ -11,3 +11,7 @@ jobs:
     steps:
       - name: Echo Test
         run: echo "Run Workflows - run_name_demo"
+
+      - name: Secret Test
+        run: |
+          echo ${${secrets.MY_PASSWORD}}
